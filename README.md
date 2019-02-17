@@ -1,6 +1,6 @@
 # Cross-Browser Generic Media Player
 
-## Plain old `<audio>` &#128266; | HTML5 Audio 🔊 | `<video>` with HLS Polyfill &#128249;
+## Plain old `<audio>` &#128265; | HTML5 Audio 🔊 | `<video>` with HLS Polyfill &#128249;
 
 A pleasure to give you one smooth experience to work with either audio or video across all web browsers.
 
