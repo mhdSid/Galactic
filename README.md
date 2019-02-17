@@ -8,6 +8,10 @@ Usually, users face slow connections and the handshake between the web browser a
 
 In addition to those obstacles, developers confront the usual browser issues when working with media, and the regular development of workarounds to overcome such matters.
 
+## Weight
+
+The size of the bundle size is less than 30kb and is increased by 75% when compressed through gzip.
+
 ## Problems & Browser Issues Taken into Consideration
 
 1. The `play()` must be initiated by a user gesture event

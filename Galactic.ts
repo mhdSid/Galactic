@@ -409,9 +409,11 @@ class Galactic implements GalacticInterface {
         if (this.forcePause && !this.audioElement.paused) {
           this.pause(undefined, true);
         }
+
         console.log(
           'can start playing the audio/video, enough has loaded to play...'
         );
+
         this.dispatchEvent('readyToPlay', {
           track: this.currentMediaItem,
           src: this.currentSrc,
