@@ -1,0 +1,42 @@
+{
+  "name": "anghami-audio-manager",
+  "version": "6.0.19",
+  "author": "Mohammad K. Sidani <mohammad.sidani@anghami.com>",
+  "description": "Web audio manager",
+  "license": "BSD",
+  "main": "./Galactic.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:anghami/AnghamiAudioManager.git"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-ts": "5.5.1",
+    "typescript": "~3.1.6"
+  },
+  "maintainers": [
+    {
+      "name": "mohamamdsidani",
+      "email": "mohammad.sidani@anghami.com"
+    }
+  ],
+  "keywords": [
+    "soundmanager",
+    "audiomanager",
+    "browser",
+    "audio",
+    "sound",
+    "mp3",
+    "mpeg4",
+    "html5",
+    "Audio manager",
+    "Audio Player",
+    "Web Player",
+    "Anghami Audio Player",
+    "Web Audio"
+  ]
+}
