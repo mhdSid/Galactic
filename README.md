@@ -24,7 +24,7 @@ The size of the bundle size is less than 30kb and is increased by 75% when compr
 ## API Description
 
 Galactic is a light weight Generic JavaScript media library that is strictly based on the HtmlMediaElement implementation. It supports HTML5 Audio, `<audio>` element, and video streaming (mp4 & HLS).
-It makes it easier on developers to manage huge playlists, and to create player-like behavior really simple and straightforward.
+It makes it easier on developers to manage huge playlists, and to create player-like behavior really simple and easy.
 
 It simply reloads the current media instance when facing any error and also after losing internet connection.
 
@@ -63,8 +63,8 @@ Unlocks the infamous browsers error: The `play()` must be initiated by a user ge
 | fadeIn        |        boolean         |   false |           Fade in the last few seconds |
 | onInit        |        Function        |         |               Called on initialization |
 | html5         |        boolean         |    true |        Either <audio> or `new Audio()` |
-| video         |        boolean         |         |            `True` to switch to <video> |
-| poster        |         string         |         |         URL for the <video> background |
+| video         |        boolean         |         |         `True` to switch to `<video>`  |
+| poster        |         string         |         |      URL for the `<video>` background  |
 | hls           |        boolean         |   false |                  Turn on HLS streaming |
 
 ### load(url: string)
@@ -178,7 +178,7 @@ Concats either a track item or another playlist on top of the existing shuffle o
 
 ### clearPlaylist(type 'list' | 'shuffleList': string, callback: Function)
 
-Clears either the shuffle or the regular list an calls a callback method if there is one. Emits an event called "playlistChange" with an object as follows:
+Clears either the shuffle or the regular list and calls a callback method if there is one. Emits an event called "playlistChange" with an object as follows:
 
 ```
 {
@@ -188,11 +188,11 @@ Clears either the shuffle or the regular list an calls a callback method if ther
 
 ### setAttribute(type: string, value?: string)
 
-Sets the <audio> or <video> element attribute with a given string value.
+Sets the `<audio>` or `<video>` element attribute with a given string value.
 
 ### removeAttribute(type: string)
 
-Removes a given attribute from the <audio> or <video> element.
+Removes a given attribute from the `<audio>` or `<video>` element.
 
 ## Props
 
