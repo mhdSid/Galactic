@@ -14,7 +14,7 @@ In addition to those obstacles, developers confront the usual browser issues whe
 
 ## Weight
 
-The size of the bundle size is less than 30kb and is increased by 75% when compressed through gzip.
+The bundle is less than 30kb and is increased by 75% when compressed through gzip.
 
 ## Problems & Browser Issues Taken into Consideration
 
