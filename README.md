@@ -1,5 +1,14 @@
 # Cross-Browser Generic Media Player
 
+## API Description
+
+Galactic is a light weight Generic JavaScript media library that is strictly based on the HtmlMediaElement implementation. It supports HTML5 Audio, `<audio>` element, and video streaming (mp4 & HLS).
+It makes it easier on developers to manage huge playlists, and to create player-like behavior really simple and easy.
+
+It simply reloads the current media instance when facing any error and also after losing internet connection.
+
+Very easy to setup in any JavaScript project - straight forward implementation.
+
 ## Plain old `<audio>` &#128265; | HTML5 Audio 🔊 | `<video>` with HLS Polyfill &#128249;
 
 A pleasure to give you one smooth experience to work with either audio or video across all web browsers.
@@ -24,15 +33,6 @@ The bundle is less than 30kb and is increased by 75% when compressed through gzi
 4. Advanced error handling for perfect asynchronous media streaming
 5. Fast media download across all JavaScript supported browsers
 6. Works on browsers that doesn't support native HLS video streaming - use `hls.js` as a polyfill
-
-## API Description
-
-Galactic is a light weight Generic JavaScript media library that is strictly based on the HtmlMediaElement implementation. It supports HTML5 Audio, `<audio>` element, and video streaming (mp4 & HLS).
-It makes it easier on developers to manage huge playlists, and to create player-like behavior really simple and easy.
-
-It simply reloads the current media instance when facing any error and also after losing internet connection.
-
-Very easy to setup in any JavaScript project - straight forward implementation.
 
 ## Methods
 
