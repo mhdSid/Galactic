@@ -141,11 +141,11 @@ This methods does four checks.
 
 First, if there is a next playing item and shuffle is on, it picks the shuffled track from the nextPlayingList, else it picks the regular next item from the nextPlayingList.
 
-Second else, if there is repeat is on, is repeats.
+Second, if repeat is on, then then sama media file plays plays again.
 
-Third else, if shuffle is on, it shuffles and increases the shuffle index.
+Third, if shuffle is on, it shuffles and increases the shuffle index.
 
-Fourth else, it just increases the current index of playing list.
+Fourth, it just increases the current index of the playing list.
 
 ### getNextPlayingListItem()
 
