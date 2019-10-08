@@ -2,7 +2,7 @@
 
 ## API Description
 
-Galactic is a light weight Generic JavaScript media library that is strictly based on the HtmlMediaElement implementation. It supports HTML5 Audio, `<audio>` element, and video streaming (mp4 & HLS).
+Galactic is a generic media library that is strictly based on the HtmlMediaElement implementation. It supports HTML5 Audio, `<audio>` element, and video streaming (mp4 & HLS).
 It makes it easier on developers to manage huge playlists, and to create player-like behavior really simple and easy.
 
 It simply reloads the current media instance when facing any error and also after losing internet connection.
