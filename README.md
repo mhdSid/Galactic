@@ -17,7 +17,7 @@ Usually, users face slow connections and the handshake between the web browser a
 
 In addition to those obstacles, developers confront the usual browser issues when working with media, and the regular development of workarounds to overcome such matters.
 
-## Demo
+## Demo: [Galactic Demo](https://mhdsid.github.io/Galactic/audio-index.html)
 
 [Anghami](https://play.anghami.com), the leader in online media streaming in the MENA region, uses Galactic as a media player.
 
