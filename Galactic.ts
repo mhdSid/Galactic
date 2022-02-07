@@ -429,9 +429,7 @@ class Galactic implements GalacticInterface {
         console.log(
           'audio is playing after having been paused or stopped for buffering'
         );
-        if (this.playstation) {
-          this.audioTrackPlaying = true;
-        }
+        this.audioTrackPlaying = true;
         if (this.isValid()) {
           this.dispatchEvent('play', { status: this.audioTrackPlaying });
         }

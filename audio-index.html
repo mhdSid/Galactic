@@ -25,7 +25,8 @@
 		    width: 95%;
 		    bottom: 25%;
 		    left: 0;
-		    margin: auto
+		    margin: auto;
+			display: none;
 		}
 		.button {
 		    border: 0;
@@ -94,6 +95,7 @@
 		<div class='controllers'>
 			<button class='button previous' onclick="previous(event)"><<</button>
 			<button class='button play' onclick="play()">Play</button>
+			<button class='button play' onclick="handlePause()">Pause</button>
 			<button class='button shuffle' onclick="shuffle(event)">Shuffle</button>
 			<button class='button repeat' onclick="repeat(event)">Repeat</button>
 			<button class='button next' onclick="next(event)">>></button>
@@ -127,10 +129,15 @@
 	        return pad(min) + ':' + pad(sec);
         };
 
+		function handlePause () {
+			console.log(swa)
+			swa.pause()
+		}
+
 		var fetchplay = function (song) {
 			var track = song ? song : swa.list[0];
 
-			var loadedEmpty = swa.loadEmpty();  //for mobile only
+			// var loadedEmpty = swa.loadEmpty();  //for mobile only
 
 				setTimeout(function() {
 					swa.load('https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3?_=1');
@@ -215,6 +222,10 @@
 
         var play = function () {
         	fetchplay();
+        };
+
+		var pause = function () {
+        	handlePause();
         };
 
         var shuffle = function (e) {

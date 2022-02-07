@@ -179,9 +179,7 @@ var Galactic = /** @class */ (function () {
                     _this.pause(undefined, true);
                 }
                 console.log('audio is playing after having been paused or stopped for buffering');
-                if (_this.playstation) {
-                    _this.audioTrackPlaying = true;
-                }
+                _this.audioTrackPlaying = true;
                 if (_this.isValid()) {
                     _this.dispatchEvent('play', { status: _this.audioTrackPlaying });
                 }
@@ -318,7 +316,7 @@ var Galactic = /** @class */ (function () {
         // Handle IE and more capable browsers
         var xhr = new XMLHttpRequest();
         // Open new request as a HEAD to the root hostname with a random param to bust the cache
-        xhr.open('HEAD', "//" + w.location.hostname + "/?rand=" + w.Math.floor((1 + w.Math.random()) * 0x10000), false); // secon argument async :
+        xhr.open('HEAD', "//".concat(w.location.hostname, "/?rand=").concat(w.Math.floor((1 + w.Math.random()) * 0x10000)), false); // secon argument async :
         // Issue request and handle response
         try {
             xhr.send();
