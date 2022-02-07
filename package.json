@@ -1,13 +1,13 @@
 {
-  "name": "anghami-audio-manager",
+  "name": "galactic",
   "version": "6.0.19",
-  "author": "Mohammad K. Sidani <mohammad.sidani@anghami.com>",
+  "author": "Mohammad Sidani",
   "description": "Web audio manager",
   "license": "BSD",
   "main": "./Galactic.min.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:anghami/AnghamiAudioManager.git"
+    "url": "git@github.com:mhdSid/Galactic.git"
   },
   "engines": {
     "node": ">=0.10"
@@ -21,7 +21,7 @@
   "maintainers": [
     {
       "name": "mohamamdsidani",
-      "email": "mohammad.sidani@anghami.com"
+      "email": "mohdsidani@gmail.com"
     }
   ],
   "keywords": [

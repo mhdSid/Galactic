@@ -1,8 +1,0 @@
-{
-  "name": "anghamiaudiomanager",
-  "author": "Mohammad K. Sidani <mohammad.sidani@anghami.com>",
-  "description": "Web audio manager",
-  "homepage": "https://github.com/anghami/AnghamiAudioManager",
-  "main": "./AudioManager.js",
-  "version": "0.1.0"
-}
