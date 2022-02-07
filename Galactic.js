@@ -112,7 +112,7 @@ var Galactic = /** @class */ (function () {
                 _this.audioTrackPlaying = undefined;
             },
             waiting: function (e) {
-                _this.audioTrackPlaying = false;
+                _this.audioTrackPlaying = undefined;
                 console.log('audio stops because it needs to buffer the next frame.');
                 _this.checkError(e);
                 if (_this.hasBuffer()) {
@@ -125,7 +125,7 @@ var Galactic = /** @class */ (function () {
                 _this.metadata = true;
             },
             loadstart: function (e) {
-                _this.audioTrackPlaying = false;
+                _this.audioTrackPlaying = undefined;
                 console.log('the browser is currently looking for the specified audio/video');
                 _this.dispatchEvent('wait', { status: _this.audioTrackPlaying });
                 if (_this.hasBuffer()) {
@@ -179,6 +179,9 @@ var Galactic = /** @class */ (function () {
                     _this.pause(undefined, true);
                 }
                 console.log('audio is playing after having been paused or stopped for buffering');
+                if (_this.playstation) {
+                    _this.audioTrackPlaying = true;
+                }
                 if (_this.isValid()) {
                     _this.dispatchEvent('play', { status: _this.audioTrackPlaying });
                 }

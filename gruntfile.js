@@ -67,10 +67,8 @@ module.exports = function(grunt) {
 
         compile: true
       },
-
       dev: {
         src: 'Galactic.ts',
-
         outDir: ''
       }
     },
@@ -83,36 +81,20 @@ module.exports = function(grunt) {
           sourceMap: true,
           preserveComments: false,
           beautify: true,
-          wrap: true,
           compress: {
-            warnings: true,
             drop_console: true
           },
           expand: true, // allow dynamic building
           flatten: true, // remove all unnecessary nesting
           maxLineLen: 9999999
         },
-        files: [
-          {
-            src: 'Galactic.js',
-            dest: 'Galactic.min.js'
-          }
-        ]
+        files: {
+          'Galactic.min.js':  'Galactic.js'
+        }
       }
     }
-
-    // 'commonjs-compiler': {
-    //     main: {
-    //         cwd         : '.',
-    //         entryModule : 'Galactic.js',
-    //         output      : 'Galactic.module.js'         // output file location
-    //     }
-    // }
   });
-
   grunt.loadNpmTasks('grunt-ts');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  //grunt.loadNpmTasks('grunt-commonjs-compiler');
-
-  grunt.registerTask('default', ['ts', 'uglify']); //'commonjs-compiler'
+  grunt.registerTask('default', ['ts', 'uglify']);
 };

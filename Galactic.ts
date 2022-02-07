@@ -91,7 +91,6 @@ interface GalacticInterface {
   options: any;
   currentMediaItem: Object;
   audioElement: HTMLAudioElement;
-  //audioSourceElement: HTMLSourceElement;
   currentSrc: string;
   audioElementEvents: {};
   progress: number;
@@ -178,7 +177,6 @@ interface GalacticInterface {
   createElement(parent: HTMLElement, type: string): any;
   addEventListeners(element: HTMLElement, events: Object): any;
   setOptions(options: Object): any;
-  //createMediaHelper(): void;
 }
 
 class Galactic implements GalacticInterface {
@@ -346,7 +344,7 @@ class Galactic implements GalacticInterface {
         this.audioTrackPlaying = undefined;
       },
       waiting: e => {
-        this.audioTrackPlaying = false;
+        this.audioTrackPlaying = undefined;
         console.log('audio stops because it needs to buffer the next frame.');
         this.checkError(e);
         if (this.hasBuffer()) {
@@ -361,7 +359,7 @@ class Galactic implements GalacticInterface {
         this.metadata = true;
       },
       loadstart: e => {
-        this.audioTrackPlaying = false;
+        this.audioTrackPlaying = undefined;
         console.log(
           'the browser is currently looking for the specified audio/video'
         );
@@ -431,6 +429,9 @@ class Galactic implements GalacticInterface {
         console.log(
           'audio is playing after having been paused or stopped for buffering'
         );
+        if (this.playstation) {
+          this.audioTrackPlaying = true;
+        }
         if (this.isValid()) {
           this.dispatchEvent('play', { status: this.audioTrackPlaying });
         }
