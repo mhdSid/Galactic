@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SimpleAudioPlayer</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+	<script src="./AudioManager.min.js"></script>
+	<style type="text/css">
+		* {
+			box-sizing: border-box;
+		}
+		html, body {
+			height: 100%;
+			width: 100%;
+		}
+		body {
+			background-color: #e2e2e2;
+			margin: 0;
+		}
+		audio, .playerController {
+			position: absolute;
+		}
+		audio {
+			right: 0;
+		    width: 95%;
+		    bottom: 25%;
+		    left: 0;
+		    margin: auto
+		}
+		.button {
+		    border: 0;
+		    background-color: #92278f;
+		    color: white;
+		    font-size: 1.1em;
+		    padding: 2%;
+		    margin: 2%
+		}
+		.previous, .next {
+			width: 10%;
+		}
+		.shuffle, .play, .repeat {
+			width: 20%;
+		}
+		.playerController, .controllers {
+			display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+			display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+			display: -ms-flexbox;      /* TWEENER - IE 10 */
+			display: -webkit-flex;     /* NEW - Chrome */
+			display: flex;  
+			width: 100%;
+		}
+		.playerController {
+			bottom: 3%;
+		}
+		.playerController {
+			flex-direction: column;
+		}
+		.timing {
+			color: black;
+		}
+		.progress, .timing {
+			margin: 0 2%;
+    		width: 96%;
+		}
+		.timing .position {
+			float: left;
+		}
+		.timing .remaining {
+			float: right;
+		}
+		.controllers {
+			flex-direction: row;
+		}
+		fieldset {
+			height: 300px;
+			width: 90%;
+			overflow: scroll;
+			position: relative;
+		}
+		fieldset div {
+		    display: inline-block;
+		    /* text-align: end; */
+		    position: absolute;
+		    left: 0;
+		    right: 0;
+		    margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<fieldset id="console-log-div"></fieldset>
+	<script src="https://rawgit.com/bahmutov/console-log-div/master/console-log-div.js"></script>
+	<div class='playerController'>
+		<div class='controllers'>
+			<button class='button previous' onclick="previous(event)"><<</button>
+			<button class='button play' onclick="play()">Play</button>
+			<button class='button shuffle' onclick="shuffle(event)">Shuffle</button>
+			<button class='button repeat' onclick="repeat(event)">Repeat</button>
+			<button class='button next' onclick="next(event)">>></button>
+		</div>
+		<progress class='progress' value="0" max="100"></progress>
+		<div class='timing'>
+			<span class='position'>00:00</span>
+			<span class='remaining'>00:00</span>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+        var swa;
+        var progressElement = document.getElementsByClassName('progress')[0];
+        var position = document.getElementsByClassName('position')[0];
+        var remaining = document.getElementsByClassName('remaining')[0];
+        var shuffleBtn = document.getElementsByClassName('shuffle')[0];
+        var repeatBtn = document.getElementsByClassName('repeat')[0];
+
+        var humanTime = function (input) {
+	        function pad(d) {
+	            return (d < 10) ? '0' + d.toString() : d.toString();
+	        }
+	        var min = (input / 1000 / 60) << 0;
+	        var sec = Math.round((input / 1000) % 60);
+	        if (sec == 60) {
+	            min += 1;
+	            sec = 0;
+	        }
+	        return pad(min) + ':' + pad(sec);
+        };
+
+		var fetchplay = function (song) {
+			var track = song ? song : swa.list[0];
+
+			var loadedEmpty = swa.loadEmpty();  //for mobile only
+
+				setTimeout(function() {
+					swa.load('https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3?_=1');
+				}, 0);
+				// .fadeOut(3000, function () {
+				// 	console.log('fading out');
+				// })
+				// .fadeIn(3000, function () {
+				// 	console.log('fading in');
+				// });
+				//.play();
+        };
+
+        function nextAction(e) {
+        	swa.applyNextAction(function (data) {
+        		console.log(data.track);
+        		console.log(swa.currentIndex);
+        		fetchplay(data.track);
+        	});
+        }
+
+        function previousAction(e) {
+        	swa.applyPreviousAction(function (data) {
+        		console.log(data.track);
+        		console.log(swa.currentIndex);
+        		fetchplay(data.track);
+        	});
+        }
+
+        var init = function () {
+        	swa = new Galactic().init(
+        	{ 
+    			html5: false, 
+    			reloadOnInit: 10000, 
+    			reloadOnError: 5000
+        	}); 
+        	swa.audioElement.controls = true;
+        	swa.list = [];
+
+        	swa.on('end', nextAction);
+
+	        swa.on('durationChange', function (data) {
+	        	console.log(data);
+	        	progressElement.value = data.progress;
+	        	position.innerHTML = humanTime(data.position);
+	        	remaining.innerHTML = humanTime(data.remainingTime);
+	        });
+
+	        swa.on('play', function () {
+	        	console.log('swa on play.........');
+	        });
+
+	        swa.on('whilePlaying', function () {
+	        	console.log('swa on whilePlaying.........');
+	        });
+
+	        swa.on('pause', function () {
+	        	console.log('swa on pause.........');
+	        });
+
+	        swa.on('bufferChange', function (data) {
+	        	console.log('swa on bufferChange: ', data.bufferProgress + ' %');
+	        });
+
+	        swa.on('load', function () {
+	        	console.log('swa on waiting.........');
+	        });
+
+	        swa.on('error', function () {
+	        	console.log('ERRRRRRrrrrrrrrrrrrrrrrrrrrrrrr.........');
+	        });
+        };
+
+        var changeButtonsValues = function () {
+        	shuffleBtn = document.getElementsByClassName('shuffle')[0];
+        	repeatBtn = document.getElementsByClassName('repeat')[0];
+        	repeatBtn.innerHTML = swa.isRepeating ? 'Repeating...' : 'Repeat';
+        	shuffleBtn.innerHTML = swa.isShuffling ? 'Shuffling...' : 'Shuffle';
+        };
+
+        var play = function () {
+        	fetchplay();
+        };
+
+        var shuffle = function (e) {
+        	swa.toggle('shuffle'); 
+        	changeButtonsValues();
+        	console.log(swa);
+        };
+
+        var repeat = function (e) {
+        	swa.toggle('repeat');
+        	changeButtonsValues();
+        	console.log(swa);
+        };
+
+        var next = function () {
+        	swa.isRepeating && swa.toggle('repeat', false);
+        	nextAction();
+        	!swa.isRepeating && (repeatBtn.innerHTML = 'Repeat');
+        };
+
+        var previous = function () {
+        	//handled by default in the player class since the default actions always moves forward so that's wwhy it's handled there
+        	//swa.isRepeating && swa.toggle('repeat', false); 
+
+        	previousAction();
+        	!swa.isRepeating && (repeatBtn.innerHTML = 'Repeat');
+        };
+
+        init();
+
+	</script>
+</body>
+</html>
