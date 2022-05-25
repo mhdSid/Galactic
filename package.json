@@ -13,7 +13,7 @@
     "node": ">=0.10"
   },
   "devDependencies": {
-    "grunt": "^1.4.1",
+    "grunt": "^1.5.3",
     "grunt-contrib-uglify": "^5.0.1",
     "grunt-ts": "^6.0.0-beta.22",
     "typescript": "^4.5.5"
